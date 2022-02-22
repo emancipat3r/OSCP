@@ -25,18 +25,7 @@ whatweb http://<IP>:<PORT> -a 4
 webtech -u <IP>
 ```
 
-===
-
-
-# Go-For-OSCP
-
-I want to share a couple of things that I think helped me preparing the Offensive Security Certified Professional - OSCP certification and what I found useful during the labs and exam. If you have any questions, feel free to contact me.
-
-Don't forget to:
-
-* Follow the courseware first and then start practicing in the labs.
-* Use additional sources to learn more.
-* Join the offensive security PWK forums and social media and talk to other people.
+---
 
 # Tips
 <b>Enable service on every reboot:</b>
