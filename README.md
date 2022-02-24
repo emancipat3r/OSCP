@@ -27,31 +27,9 @@ webtech -u <IP>
 
 ---
 
-# Tips
-<b>Enable service on every reboot:</b>
-
-	update-rc.d <[SERVICE]> enable
-
 <b>Extract link from html page:</b>
 
 	cat index.html | grep "href=" | cut -d "/" -f3| grep "<[DOMAIN]>" | cut -d '"' -f1 | sort -u
-
-# Netcat
-<b>Interact with application:</b>
-
-	nc -nv <[IP]> <[PORT]>
-
-<b>Listener:</b>
-
-	nc -nlvp <[PORT]>
-
-<b>File transfer (client):</b>
-
-	nc -nlvp <[PORT]> > <[FILE]>
-
-<b>File transfer (server):</b>
-
-	nc -nv <[IP]> <[PORT]> < <[FILE_TO_SEND]>
 
 # Bind vs Reverse Shell
 
