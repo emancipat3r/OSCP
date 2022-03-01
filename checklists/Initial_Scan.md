@@ -1,0 +1,17 @@
+# PRE-SCAN ENVIRONMENTAL VARIABLES
+```
+IP = 10.10.10.x
+BOX = <HOSTNAME>
+```
+
+# INITIAL SCANS
+```
+# QUICK CHECK TO SEE WHAT TCP PORTS ARE OPEN
+nmap --min-rate 10000 $IP -p- -Pn -oN recon/nmap_tcp_quick.txt
+
+# CHECK TO SEE WHAT UDP PORTS ARE OPEN - RUN IN BACKGROUND
+sudo nmap -sU -sV $IP -p 1-1024 -Pn -oN recon/nmap_udp_quick.txt
+
+# NMAP DEFAULT SCRIPTS, SERVICE VERSION, AND OS CHECK SCAN FOR TCP PORTS THAT WERE DISCOVERED OPEN
+nmap -A -T4 $IP -p <OPEN_PORTS> -Pn -oN recon/nmap_tcp_full.txt
+```
