@@ -15,7 +15,7 @@ nmap -A -T5 <IP> -p <ports>
 ```
 # DIRECTORY BRUTEFORCE
 gobuster dir -u http://<IP>:<PORT>/<DIR> -w <WORDLIST> -r -e 
-gobuster dir -u http://10.10.10.218/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -t 100 -r -x txt,html,php
+gobuster dir -u http://10.10.10.218/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 50 -r -x txt,html,php
 dirsearch -u <IP> -e <COMMA SEPARATED EXTENSIONS> -w <WORDLIST> -t 30 -r -R 1 -f
 
 # VULNSCAN
