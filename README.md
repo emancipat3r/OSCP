@@ -34,8 +34,6 @@ webtech -u <IP>
 
 # Bind vs Reverse Shell
 
-<img src="https://raw.github.com/SynAckPwn23/Go-For-OSCP/master/Uploads/img/Bind_Reverse_shell.png" width="500"/>
-
 <b>Bind Shell:</b>
 
 Bob needs Alice's help. Bob set up a listener on port 4444 with -e parameter:
