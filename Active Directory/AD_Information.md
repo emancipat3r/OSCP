@@ -19,3 +19,4 @@ A server running the **Active Directory Domain Service (AD DS)** role is called 
 # Terms
 
 ## Directory Service
+In computing, a directory service or name service maps the names of the network resources to their respective network addresses. It is a shared information infrastructure for locating, managing, administering and organizing everyday items and network resources, which can include volumes, folders, files, printers, users, groups, devices, telephone numbers and other objects. 
