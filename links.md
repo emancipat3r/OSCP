@@ -9,6 +9,14 @@ Below are links I stumbled across while studying for the OSCP exam
  - https://www.cyberseclabs.co.uk/          # like vhl
  - https://411hall.github.io/OSCP-Preparation/
  - https://github.com/avi7611/oscp
+ - https://0xsp.com/offensive/red-ops-techniques/red-team-cheatsheet
+ - https://tryhackme.com/room/activedirectorybasics
+ - https://tryhackme.com/room/attackingkerberos
+ - https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-domain-services
+ - https://www.microsoft.com/en-us/download/details.aspx?id=36036
+ - https://adsecurity.org/
+ - https://github.com/rosehgal/BinExp
+ - 
 
 
 # Reddit
