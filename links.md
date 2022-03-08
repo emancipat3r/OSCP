@@ -16,7 +16,9 @@ Below are links I stumbled across while studying for the OSCP exam
  - https://www.microsoft.com/en-us/download/details.aspx?id=36036
  - https://adsecurity.org/
  - https://github.com/rosehgal/BinExp
- - 
+ - https://0xsp.com/offensive/red-ops-techniques/red-team-cheatsheet            
+ - https://zer1t0.gitlab.io/posts/attacking_ad/#why-this-post
+
 
 
 # Reddit
