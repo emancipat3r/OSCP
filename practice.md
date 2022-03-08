@@ -60,7 +60,7 @@ HACKTHIS!! https://www.hackthis.co.uk/
 HackThis!! is comprised of 50+ hacking levels with each worth a set number of points depending on its difficulty level. Similar to Hack This Site, HackThis!! also features a lively community, numerous hacking related articles and news, and a forum where you can discuss the levels and a security related topics that might be of interest to you.
 
 ENIGMA GROUP https://www.enigmagroup.org/
-Enigma Group has over 300 challenges with a focus on the OWASP Top 10 exploits. They boast nearly 48,000 active members and host weekly CTF challenges as well as weekly and monthly contests.
+Enigma Group has over 300 challenges with a focus on thgite OWASP Top 10 exploits. They boast nearly 48,000 active members and host weekly CTF challenges as well as weekly and monthly contests.
 
 GOOGLE GRUYERE http://google-gruyere.appspot.com/
 Google Gruyere shows how web application vulnerabilities can be exploited and how to defend against these attacks. You’ll get a chance to do some real penetration testing and actually exploit a real application with attacks like XSS and XSRF.
