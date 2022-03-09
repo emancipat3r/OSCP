@@ -3,8 +3,8 @@
 # NMAP
 ```
 # EARLY SCANS
-nmap --min-rate 10000 <IP> -p-
-nmap -A -T5 <IP> -p <ports>
+nmap --min-rate 10000 $IP -p-
+nmap -A -T4 $IP -p $PORTS
 
 # NMAP SCRIPTS
 locate *.nse | grep ftp
@@ -64,8 +64,8 @@ nslookup
 ```
 crackmapexec smb $IP
 nbtscan $IP/$CIDR
-nmap -p139,445 --script smb-enum-users $IP
-nmap -p139,445 --script=smb-vuln-* --script-args=unsafe=1 $IP
+nmap -p 139,445 --script smb-enum-users $IP
+nmap -p 139,445 --script=smb-vuln-* --script-args=unsafe=1 $IP
 enum4linux $IP
 smbclient -L $IP -N
 smbclient \\$IP\$SHARE -N
