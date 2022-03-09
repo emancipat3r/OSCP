@@ -18,6 +18,7 @@ Below are links I stumbled across while studying for the OSCP exam
  - https://github.com/rosehgal/BinExp
  - https://0xsp.com/offensive/red-ops-techniques/red-team-cheatsheet            
  - https://zer1t0.gitlab.io/posts/attacking_ad/#why-this-post
+ - https://khaoticdev.net/cheatsheets/#ad
 
 
 
