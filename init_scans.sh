@@ -25,7 +25,7 @@ else
 
     	echo "[*] Running UDP -sC scan"
     	printf "\n+-------------------------------+\n"
-    	sudo nmap -sUV --min-hostgroup 100 $IP -p 1-10000 -oN nmap_udp_quick.txt
+    	sudo nmap -sUV --min-hostgroup 100 $IP -oN nmap_udp_quick.txt
     	printf "\n+-------------------------------+\n"
     fi
 fi
