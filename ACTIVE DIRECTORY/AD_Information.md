@@ -31,6 +31,12 @@ python3 windapsearch.py --dc-ip 10.129.1.207 -u "" -U
 
 # GRAB ALL COMPUTERS IN DOMAIN
 python3 windapsearch.py --dc-ip 10.129.1.207 -u "" -C
+
+# WITH CREDENTIALS
+python3 windapsearch.py --dc-ip 10.129.1.207 -u inlanefreight\\james.cross --da
+
+# WITH CREDENTIALS - LIST UNCONSTRAINED DELEGATION USERS
+python3 windapsearch.py --dc-ip 10.129.1.207 -d inlanefreight.local -u inlanefreight\\james.cross --unconstrained-users
 ```
 
 - TOOL - ldapsearch
@@ -46,16 +52,26 @@ ldapsearch -h 10.129.1.207 -p 389 -x -b "dc=inlanefreight,dc=local"
     - Python3 script to quickly get various information from a domain controller through its LDAP service.
 ```
 # USAGE
-ldapsearch-ad.py [-h] -l LDAP_SERVER [-ssl] -t REQUEST_TYPE [-d DOMAIN] [-u USERNAME] [-p PASSWORD] [-s SEARCH_FILTER] [-z SIZE_LIMIT] [-o OUTPUT_FILE] [-v] [search_attributes ...]
+python3 ldapsearch-ad.py [-h] -l LDAP_SERVER [-ssl] -t REQUEST_TYPE [-d DOMAIN] [-u USERNAME] [-p PASSWORD] [-s SEARCH_FILTER] [-z SIZE_LIMIT] [-o OUTPUT_FILE] [-v] [search_attributes ...]
 
 # NO CREDS
-ldapsearch-ad.py -l 192.168.56.20 -t info
+python3 ldapsearch-ad.py -l 192.168.56.20 -t info
+python3 ldapsearch-ad.py -l 10.129.1.207 -t info
 
 # EXAMPLE WITH USER CREDENTIALS USING -all SWITCH
-ldapsearch-ad.py -l 192.168.56.20 -d evilcorp -u jjohnny -p 'P@$$word' -t all
+python3 ldapsearch-ad.py -l 192.168.56.20 -d evilcorp -u jjohnny -p 'P@$$word' -t all
 
 # USE WITH HASH
-./ldapsearch-ad.py -l 192.168.56.20 -d evilcorp -u jjohnny -hashes :32ed87bdb5fdc5e9cba88547376818d4 -t show-admins
+python3 ldapsearch-ad.py -l 192.168.56.20 -d evilcorp -u jjohnny -hashes :32ed87bdb5fdc5e9cba88547376818d4 -t show-admins
+
+# WITH CREDS - GET DOMAIN PASSWORD POLICY
+python3 ldapsearch-ad.py -l 10.129.1.207 -d inlanefreight -u james.cross -p Summer2020 -t pass-pols
+
+# WITH CREDS - CHECK FOR USERS VULNERABLE TO KERBEROAST ATTACK
+python3 ldapsearch-ad.py -l 10.129.1.207 -d inlanefreight -u james.cross -p Summer2020 -t kerberoast | grep servicePrincipalName:
+
+# WITH CREDS - CHECK FOR USERS VULNERABLE TO ASREPROAST ATTACK
+python3 ldapsearch-ad.py -l 10.129.1.207 -d inlanefreight -u james.cross -p Summer2020 -t asreproast
 ```
 
 
@@ -84,3 +100,6 @@ ldapsearch-ad.py -l 192.168.56.20 -d evilcorp -u jjohnny -p 'P@$$word' -t all
 
 ## Directory Service
 In computing, a directory service or name service maps the names of the network resources to their respective network addresses. It is a shared information infrastructure for locating, managing, administering and organizing everyday items and network resources, which can include volumes, folders, files, printers, users, groups, devices, telephone numbers and other objects.
+
+## Unconstrained Delegation
+Delegation is an Active Directory feature for when a user or computer account needs to impersonate another account. For example, when a user calls a web application hosted on the web server, the application can impersonate the user credentials to access resources hosted on a different server, such as a database server. Any domain computers with unconstrained delegation enabled can impersonate user credentials to any service in the domain.
