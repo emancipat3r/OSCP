@@ -28,15 +28,36 @@ python3 windapsearch.py --dc-ip 10.129.1.207 -u "" --functionality
 
 # GRAB ALL USERS IN DOMAIN
 python3 windapsearch.py --dc-ip 10.129.1.207 -u "" -U
+
+# GRAB ALL COMPUTERS IN DOMAIN
+python3 windapsearch.py --dc-ip 10.129.1.207 -u "" -C
 ```
 
-- TOOL - LDAP search
+- TOOL - ldapsearch
     - ldapsearch opens a connection to an LDAP server, binds, and performs a search using specified parameters. The filter should conform to the string representation for search filters as defined in RFC 4515. If not provided, the default filter, (objectClass=*), is used.
 
 ```
+# CHECK LDAP NULL AUTHENTICATION AND PULL LDAP DUMP
 ldapsearch -h 10.129.1.207 -p 389 -x -b "dc=inlanefreight,dc=local"
-
 ```
+
+- TOOL - ldapsearch-ad.py
+    - https://github.com/yaap7/ldapsearch-ad
+    - Python3 script to quickly get various information from a domain controller through its LDAP service.
+```
+# USAGE
+ldapsearch-ad.py [-h] -l LDAP_SERVER [-ssl] -t REQUEST_TYPE [-d DOMAIN] [-u USERNAME] [-p PASSWORD] [-s SEARCH_FILTER] [-z SIZE_LIMIT] [-o OUTPUT_FILE] [-v] [search_attributes ...]
+
+# NO CREDS
+ldapsearch-ad.py -l 192.168.56.20 -t info
+
+# EXAMPLE WITH USER CREDENTIALS USING -all SWITCH
+ldapsearch-ad.py -l 192.168.56.20 -d evilcorp -u jjohnny -p 'P@$$word' -t all
+
+# USE WITH HASH
+./ldapsearch-ad.py -l 192.168.56.20 -d evilcorp -u jjohnny -hashes :32ed87bdb5fdc5e9cba88547376818d4 -t show-admins
+```
+
 
 
 
