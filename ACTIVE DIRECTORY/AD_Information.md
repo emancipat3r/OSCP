@@ -14,13 +14,13 @@ A server running the **Active Directory Domain Service (AD DS)** role is called 
 ## Active Directory Attacks
 
 ### LDAP Anonymous Bind
-- LDAP anonymous binds allow unauthenticated attackers to retrieve information from the domain, such as a full listing of users, groups, computers, user account attributes, and the domain password policy. Linux hosts running open-source versions of LDAP and Linux vCenter appliances are often configured to allow anonymous binds.
+LDAP anonymous binds allow unauthenticated attackers to retrieve information from the domain, such as a full listing of users, groups, computers, user account attributes, and the domain password policy. Linux hosts running open-source versions of LDAP and Linux vCenter appliances are often configured to allow anonymous binds.
 
-- When an LDAP server allows anonymous base binds, an attacker does not need to know a base object to query a considerable amount of information from the domain. _This can also be leveraged to mount a password spraying attack or read information such as passwords stored in account description fields_. Tools such as windapsearch and ldapsearch can be utilized to enumerate domain information via an anonymous LDAP bind. Information that we obtain from an anonymous LDAP bind can be leveraged to mount a password spraying or AS-REPRoasting attack, read information such as passwords stored in account description fields.
-- TOOL - windapsearch
-    - https://github.com/ropnop/windapsearch
-    - windapsearch is a Python script to help enumerate users, groups and computers from a Windows domain through LDAP queries. By default, Windows Domain Controllers support basic LDAP operations through port 389/tcp. With any valid domain account (regardless of privileges), it is possible to perform LDAP queries against a domain controller for any AD related information.
-    - You can always use a tool like ldapsearch to perform custom LDAP queries against a Domain Controller. I found myself running different LDAP commands over and over again, and it was difficult to memorize all the custom LDAP queries. So this tool was born to help automate some of the most useful LDAP queries a pentester would want to perform in an AD environment.
+When an LDAP server allows anonymous base binds, an attacker does not need to know a base object to query a considerable amount of information from the domain. _This can also be leveraged to mount a password spraying attack or read information such as passwords stored in account description fields_. Tools such as windapsearch and ldapsearch can be utilized to enumerate domain information via an anonymous LDAP bind. Information that we obtain from an anonymous LDAP bind can be leveraged to mount a password spraying or AS-REPRoasting attack, read information such as passwords stored in account description fields.
+#### TOOL - windapsearch
+- https://github.com/ropnop/windapsearch
+- windapsearch is a Python script to help enumerate users, groups and computers from a Windows domain through LDAP queries. By default, Windows Domain Controllers support basic LDAP operations through port 389/tcp. With any valid domain account (regardless of privileges), it is possible to perform LDAP queries against a domain controller for any AD related information.
+- You can always use a tool like ldapsearch to perform custom LDAP queries against a Domain Controller. I found myself running different LDAP commands over and over again, and it was difficult to memorize all the custom LDAP queries. So this tool was born to help automate some of the most useful LDAP queries a pentester would want to perform in an AD environment.
 
 ```
 # CHECK LDAP NULL AUTHENTICATION AND DOMAIN FUNCTIONAL LEVEL
@@ -39,17 +39,18 @@ python3 windapsearch.py --dc-ip 10.129.1.207 -u inlanefreight\\james.cross --da
 python3 windapsearch.py --dc-ip 10.129.1.207 -d inlanefreight.local -u inlanefreight\\james.cross --unconstrained-users
 ```
 
-- TOOL - ldapsearch
-    - ldapsearch opens a connection to an LDAP server, binds, and performs a search using specified parameters. The filter should conform to the string representation for search filters as defined in RFC 4515. If not provided, the default filter, (objectClass=*), is used.
+#### TOOL - ldapsearch
+- ldapsearch opens a connection to an LDAP server, binds, and performs a search using specified parameters. The filter should conform to the string representation for search filters as defined in RFC 4515. If not provided, the default filter, (objectClass=*), is used.
 
 ```
 # CHECK LDAP NULL AUTHENTICATION AND PULL LDAP DUMP
 ldapsearch -h 10.129.1.207 -p 389 -x -b "dc=inlanefreight,dc=local"
 ```
 
-- TOOL - ldapsearch-ad.py
-    - https://github.com/yaap7/ldapsearch-ad
-    - Python3 script to quickly get various information from a domain controller through its LDAP service.
+#### TOOL - ldapsearch-ad.py
+- https://github.com/yaap7/ldapsearch-ad
+- Python3 script to quickly get various information from a domain controller through its LDAP service.
+
 ```
 # USAGE
 python3 ldapsearch-ad.py [-h] -l LDAP_SERVER [-ssl] -t REQUEST_TYPE [-d DOMAIN] [-u USERNAME] [-p PASSWORD] [-s SEARCH_FILTER] [-z SIZE_LIMIT] [-o OUTPUT_FILE] [-v] [search_attributes ...]
