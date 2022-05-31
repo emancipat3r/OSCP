@@ -30,6 +30,10 @@ then
   tmux send-keys -t 1:VPN 'vpn' ENTER
   tmux send-keys -t 1:T1 'sudo ~/repos/OSCP/init_scans.sh $target'
 
+
+  ## Attach Session
+  tmux a -t 1
+
 else
 
   ## Create Tmux session and windows
