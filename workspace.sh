@@ -7,13 +7,13 @@ if (($#==2));
 then
 
   ## Create dir structure
-  mkdir -p ~/boxes/$name
-  mkdir -p ~/boxes/$name/recon
-  mkdir -p ~/boxes/$name/loot
-  mkdir -p ~/boxes/$name/exploits
+  mkdir -p ~/boxes/htb/$name
+  mkdir -p ~/boxes/htb/$name/recon
+  mkdir -p ~/boxes/htb/$name/loot
+  mkdir -p ~/boxes/htb/$name/exploits
 
   ## Environment setup
-  cd ~/boxes/$name
+  cd ~/boxes/htb/$name
   export target
   export box
   export name
@@ -27,8 +27,8 @@ then
   tmux new-window -d -n T4
 
   ## Startup Commands
-  tmux send-keys -t 1:VPN 'vpn' ENTER 
-  tmux send-keys -t 1:T1 'nmap -sC -sV $target -p- -oN recon/nmap_tcp_full.txt' 
+  tmux send-keys -t 1:VPN 'vpn' ENTER
+  tmux send-keys -t 1:T1 'sudo ~/repos/OSCP/init_scans.sh $target'
 
 else
 
@@ -41,7 +41,7 @@ else
   tmux new-window -d -n T4
 
   ## Startup Commands
-  tmux send-keys -t 1:VPN 'vpn' ENTER 
+  tmux send-keys -t 1:VPN 'vpn' ENTER
 
   ## Attach session
   tmux a -t 1
