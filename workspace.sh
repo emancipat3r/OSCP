@@ -18,13 +18,10 @@ then
   mkdir -p ~/boxes/htb/$name/exploits
 
   ## Environment setup
-<<<<<<< HEAD
   cd ~/boxes/htb/$name
   export target
-=======
   cd ~/boxes/$name
   export IP=$target
->>>>>>> 7a80f40 (push)
   export box
   export name
 
@@ -38,18 +35,15 @@ then
   tmux new-window -d -n T5
 
   ## Startup Commands
-<<<<<<< HEAD
   tmux send-keys -t 1:VPN 'vpn' ENTER
-  tmux send-keys -t 1:T1 'sudo ~/repos/OSCP/init_scans.sh $target'
+  tmux send-keys -t 1:T1 'sudo ~/repos/OSCP/init_scans.sh $IP'
 
 
   ## Attach Session
-=======
   tmux send-keys -t 1:VPN 'vpn' ENTER 
   tmux send-keys -t 1:T1 'cd ~/boxes/$name; sudo ~/repos/OSCP/init_scans.sh $IP' 
 
   ## Attach session
->>>>>>> 7a80f40 (push)
   tmux a -t 1
 
 else
