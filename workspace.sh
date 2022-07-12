@@ -3,12 +3,9 @@
 target=$1
 name=$2
 
-if (($#==1));
+if (($1=='-h'));
 then
-	if (($1=='-h'));
-	then
-		echo "sudo ~/repos/OSCP/workspace.sh [IP] [NAME]"
-	fi
+	echo "sudo ~/repos/OSCP/workspace.sh [IP] [NAME]"
 fi
 
 if (($#==2));
@@ -40,11 +37,6 @@ then
   ## Startup Commands
   tmux send-keys -t 1:VPN 'vpn' ENTER
   tmux send-keys -t 1:T1 'sudo ~/repos/OSCP/init_scans.sh $IP'
-
-
-  ## Attach Session
-  tmux send-keys -t 1:VPN 'vpn' ENTER
-  tmux send-keys -t 1:T1 'cd ~/boxes/$name; sudo ~/repos/OSCP/init_scans.sh $IP'
 
   ## Attach session
   tmux a -t 1
