@@ -3,10 +3,26 @@
 target=$1
 name=$2
 
-if (($1=='-h'));
-then
-	echo "sudo ~/repos/OSCP/workspace.sh [IP] [NAME]"
-fi
+Help()
+{
+	#Display Help
+	echo "This script creates a tmux environment meant for CTFs"
+	echo
+	echo "Syntax: ./workspace.sh [IP] [NAME]"
+	echo
+}
+
+
+while getopts ":h" option; do
+	case $option in
+		h) # Display help
+			Help
+			exit;;
+		\?) # incorrect option
+			echo "Error: Invalid option"
+			exit;;
+	esac
+done
 
 if (($#==2));
 then
