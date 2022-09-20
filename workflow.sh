@@ -66,28 +66,97 @@ crossedout_off='\e[29m'
 #    MAIN FUNCTION 							   	   #
 ####################################################
 function main() {
-	usage
+	while :
+	do
+		case "$1" in
+		-h | --help)
+			usage
+			exit 0
+			;;
+		-s | --scan)
+			IP=$2
+			init_scans "$IP"
+			exit 0
+			;;
+		--) # End of all options
+			shift
+			break
+			;;
+		-*)
+			echo -e "\e[31m\e[01m[Error]\e[00m" "Unknown option $1" >&2
+			exit 1
+			;;
+		*) # No more options
+			break
+			;;
+		esac
+	done
+
 }
-
-
-####################################################
-#    COLLECT USER INPUT							   #
-####################################################
-
 
 
 ####################################################
 #    HELPER FUNCTION 							   #
 ####################################################
 function usage() {
-	echo -e "#############################################################"
-	echo -e "#           OSCP Enumeration Automation Script              #"
-	echo -e "#############################################################"
+	echo -e "\e[32m#############################################################\e[00m"
+	echo -e "\e[32m#\e[00m" "           \e[34mOSCP Enumeration Automation Script\e[00m            " "\e[32m#\e[00m"
+	echo -e "\e[32m#############################################################\e[00m"
+	echo -e ""
+	echo -e ""
+	echo -e "-h, --help		Show this help message"
+	echo -e "-s, --scan		Run TCP & UDP nmap scans"
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
+	echo -e ""
 }
 
 
 
 
+####################################################
+#    INITIAL NMAP SCANS						   	   #
+####################################################
+function init_scans() {	
+	if [ "$EUID" -ne 0 ]
+	then
+		echo "Please run as root"
+		exit
+	else
+		echo "[*] Running TCP quick scan"
+		ports=`nmap --min-rate 10000 $IP -p- -Pn -oN recon/nmap_tcp_all_quick.txt | awk -F "/" '{if ($1 ~ /^[:0-9:]/) print $1}' | paste -d, -s -`
+		printf "\n[*] $(echo $IP) - OPEN PORTS\n"
+		echo "------------------------------"
+		printf "\t[-] $ports\n\n\n"
+
+		echo "[*] Running TCP -A scan"
+		printf "\n+-------------------------------+\n"
+		nmap -A -T4 $IP -p $ports -Pn -oN recon/nmap_tcp_all.txt
+		printf "\n+-------------------------------+\n\n\n"
+
+		echo "[*] Running UDP -sC scan"
+		printf "\n+-------------------------------+\n"
+		sudo nmap -sU --min-hostgroup 100 --min-rate 10000 $IP -p- -oN recon/nmap_udp_quick.txt
+		printf "\n+-------------------------------+\n"
+	fi
+}
 
 ####################################################
 #    MAIN FUNCTION CALL						   	   #
