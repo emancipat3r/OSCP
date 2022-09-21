@@ -1,7 +1,6 @@
 #!/bin/bash
 # An enumeration workflow script built for OSCP
 version="Version 0.001"
-test
 
 
 ####################################################
