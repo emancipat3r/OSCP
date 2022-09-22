@@ -6,7 +6,8 @@ version="Version 0.001"
 ####################################################
 #    COLOR VARIABLES						   	   #
 ####################################################
-#( fg
+
+# FOREGROUND
 red='\e[31m'
 lred='\e[91m'
 green='\e[32m'
@@ -23,8 +24,8 @@ grey='\e[90m'
 lgrey='\e[37m'
 white='\e[97m'
 black='\e[30m'
-##)
-#( bg
+
+# BACKGROUND
 b_red='\e[41m'
 b_lred='\e[101m'
 b_green='\e[42m'
@@ -41,9 +42,9 @@ b_grey='\e[100m'
 b_lgrey='\e[47m'
 b_white='\e[107m'
 b_black='\e[40m'
-##)
-#( special
-reset='\e[0;0m'
+
+# SPECIAL
+reset='\e[00m'
 bold='\e[01m'
 italic='\e[03m'
 underline='\e[04m'
@@ -56,9 +57,6 @@ underline_off='\e[24m'
 inverse_off='\e[27m'
 conceil_off='\e[28m'
 crossedout_off='\e[29m'
-##)
-#)
-
 
 
 ####################################################
@@ -99,10 +97,10 @@ function main() {
 ####################################################
 function usage() {
 	echo -e "\e[32m#############################################################\e[00m"
-	echo -e "\e[32m#\e[00m" "           \e[34mOSCP Enumeration Automation Script\e[00m            " "\e[32m#\e[00m"
+	echo -e "\e[32m#\e[00m" "           \e[34m\e[01mOSCP Enumeration Automation Script            \e[00m" "\e[32m#\e[00m"
 	echo -e "\e[32m#############################################################\e[00m"
 	echo -e ""
-	echo -e ""
+	echo -e "Options:"
 	echo -e "-h, --help		Show this help message"
 	echo -e "-s, --scan		Run TCP & UDP nmap scans"
 	echo -e ""
