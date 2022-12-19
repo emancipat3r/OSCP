@@ -66,6 +66,7 @@ def main():
       subprocess.run(["testssl.sh", target])
     else:
       print("Enter a correct choice next time...")
+      break
       
       
 if __name__ == "__main__":
