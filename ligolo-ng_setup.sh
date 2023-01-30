@@ -3,6 +3,7 @@
 read -p "[*] Enter the target subnet address (e.g. 172.16.1.0/24): " subnet
 
 if (( $# >= 1 ))
+then
 	if [ "$EUID" -ne 0 ]
 	then
 		sudo ip tuntap add user $(whoami) mode tun ligolo
